@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:56:57 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/06 18:04:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:03:56 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	main(int ac, char **av)	{
 	for (int i = 1; i < ac; i++) {
 		std::cout << convertString(av[i]);
 		}
-	std::cout << "\n";
+	std::cout << std::endl;
 	return 0;
 }
