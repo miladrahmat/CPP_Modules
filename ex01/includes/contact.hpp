@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:33:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 15:02:38 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:44:15 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <ctime>
+# include <iomanip>
 
 class Contact
 {
@@ -36,5 +37,7 @@ class Contact
 		std::string getNickname() const;
 		time_t	getCreated() const;
 };
+
+void	printContact(std::string toPrint, bool newLine);
 
 #endif

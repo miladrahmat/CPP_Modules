@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:55:45 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 15:03:43 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:12:36 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	main(void)
 	PhoneBook	phonebook;
 	std::string	cmd;
 	
+	std::cout << "Welcome to my awesome Phonebook!" << std::endl << std::endl;
 	while (1)
 	{
-		std::cout << "Welcome to my awesome Phonebook!" << std::endl << std::endl;
 		std::cout << "You can use the following commands:" << std::endl << std::endl;
 		std::cout << "ADD: add a new contact	";
 		std::cout << "SEARCH: search for an existing contact	";
@@ -55,8 +55,8 @@ int	main(void)
 			return 1;
 		if (cmd.compare("ADD") == 0)
 			add_contact(&phonebook);
-		/* else if (cmd.compare("SEARCH") == 0)
-			searchContact(&phonebook); */
+		else if (cmd.compare("SEARCH") == 0)
+			phonebook.searchContact();
 		else if (cmd.compare("EXIT") == 0)
 			return 0;
 	}
