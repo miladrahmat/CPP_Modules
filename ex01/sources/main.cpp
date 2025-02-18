@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:55:45 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:57:35 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:03:43 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	add_contact(PhoneBook *phonebook)
 	std::string	_first_name;
 	std::string	_last_name;
 	std::string	_phone_number;
-	std::string	_age;
+	std::string	_nickname;
 
 	_first_name = getInput("Enter first name: ");
 	_last_name = getInput("Enter last name: ");
 	_phone_number = getInput("Enter phone number: ");
-	_age = getInput("Enter age: ");
-	phonebook->addContact(_first_name, _last_name, _phone_number, _age);
+	_nickname = getInput("Enter nickname: ");
+	phonebook->addContact(_first_name, _last_name, _phone_number, _nickname);
 }
 
 int	main(void)

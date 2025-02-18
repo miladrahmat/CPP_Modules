@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:07:19 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:55:11 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:04:14 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook();
 		void	addContact(std::string _first_name, std::string _last_name, \
-			std::string _phone_number, std::string _age);
+			std::string _phone_number, std::string _nickname);
 };
 
 int	oldestContactIndex(Contact contacts[8]);

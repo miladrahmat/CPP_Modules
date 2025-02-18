@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:07:09 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:57:30 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:04:06 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ PhoneBook::~PhoneBook()
 }
 
 void	PhoneBook::addContact(std::string _first_name, std::string _last_name, \
-	std::string _phone_number, std::string _age)
+	std::string _phone_number, std::string _nickname)
 {
 	if (_num_contacts < 8)
 	{
-		_contacts[_num_contacts] = Contact(_first_name, _last_name, _phone_number, _age);
+		_contacts[_num_contacts] = Contact(_first_name, _last_name, _phone_number, _nickname);
 		_num_contacts++;
 	}
 	else
-		_contacts[oldestContactIndex(_contacts)] = Contact(_first_name, _last_name, _phone_number, _age);
+		_contacts[oldestContactIndex(_contacts)] = Contact(_first_name, _last_name, _phone_number, _nickname);
 }

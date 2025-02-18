@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:33:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:48:48 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:02:38 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Contact
 		std::string	_first_name;
 		std::string	_last_name;
 		std::string	_phone_number;
-		std::string	_age;
+		std::string	_nickname;
 		time_t		_created;
 
 	public:
@@ -33,7 +33,7 @@ class Contact
 		std::string getFirst_name() const;
 		std::string getLast_name() const;
 		std::string getPhone_number() const;
-		std::string getAge() const;
+		std::string getNickname() const;
 		time_t	getCreated() const;
 };
 
