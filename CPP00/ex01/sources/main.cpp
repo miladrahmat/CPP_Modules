@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:55:45 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 17:12:36 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:59:05 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+std::string	getNumber(std::string prompt)
+{
+	std::string	input;
+	
+	input = "";
+	while (input.length() == 0)
+	{
+		std::cout << prompt;
+		std::getline(std::cin, input);
+		if (input.find_first_not_of("0987654321") != std::string::npos)
+		{
+			std::cout << "Invalid phone number" << std::endl;
+			input.clear();
+			input = "";
+		}
+	}
+	return (input);
+}
 
 std::string	getInput(std::string prompt)
 {
@@ -34,7 +53,7 @@ void	add_contact(PhoneBook *phonebook)
 
 	_first_name = getInput("Enter first name: ");
 	_last_name = getInput("Enter last name: ");
-	_phone_number = getInput("Enter phone number: ");
+	_phone_number = getNumber("Enter phone number: ");
 	_nickname = getInput("Enter nickname: ");
 	phonebook->addContact(_first_name, _last_name, _phone_number, _nickname);
 }

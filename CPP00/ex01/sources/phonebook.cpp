@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:07:09 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 17:26:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:09:14 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	PhoneBook::searchContact() const
 	printContact("Nickname", true);
 	while (i < getNum_contacts())
 	{
-		printContact(std::to_string(i), false);
+		printContact(std::to_string(i + 1), false);
 		printContact(_contacts[i].getFirst_name(), false);
 		printContact(_contacts[i].getLast_name(), false);
 		printContact(_contacts[i].getNickname(), true);
@@ -65,10 +65,10 @@ void	PhoneBook::searchContact() const
 	}
 	else if (i >= 0 && i <= getNum_contacts())
 	{
-		std::cout << std::endl << "First name: " << _contacts[i].getFirst_name() << std::endl;
-		std::cout << "Last name: " << _contacts[i].getLast_name() << std::endl;
-		std::cout << "Nickname: " << _contacts[i].getNickname() << std::endl;
-		std::cout << "Phone number: " << _contacts[i].getPhone_number() << std::endl << std::endl;
+		std::cout << std::endl << "First name: " << _contacts[i - 1].getFirst_name() << std::endl;
+		std::cout << "Last name: " << _contacts[i - 1].getLast_name() << std::endl;
+		std::cout << "Nickname: " << _contacts[i - 1].getNickname() << std::endl;
+		std::cout << "Phone number: " << _contacts[i - 1].getPhone_number() << std::endl << std::endl;
 		std::cin.clear();
 	}
 	else
