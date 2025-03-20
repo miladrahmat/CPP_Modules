@@ -6,7 +6,7 @@
 /*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 22:50:56 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/20 23:52:43 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:57:59 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	Harl::complain(std::string level)
 
 	while (i < 4)
 	{
-		if (level == levels[i])
+		if (level.compare(levels[i]) == 0)
 			break ;
 		i++;
 	}
