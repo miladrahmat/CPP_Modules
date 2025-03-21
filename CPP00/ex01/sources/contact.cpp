@@ -6,19 +6,20 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:10:39 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/02/18 15:03:10 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:49:08 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-Contact::Contact(std::string first_name, std::string last_name, \
-	std::string phone_number, std::string nickname)
+Contact::Contact(std::string first_name, std::string last_name, std::string phone_number, \
+		std::string nickname, std::string darkest_secret)
 {
 	_first_name = first_name;
 	_last_name = last_name;
 	_phone_number = phone_number;
 	_nickname = nickname;
+	_darkest_secret = darkest_secret;
 	time(&_created);
 }
 
@@ -55,4 +56,9 @@ std::string Contact::getNickname() const
 time_t	Contact::getCreated() const
 {
 	return (_created);
+}
+
+std::string	Contact::getDarkestSecret() const
+{
+	return (_darkest_secret);
 }
