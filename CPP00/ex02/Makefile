@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+         #
+#    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 14:44:50 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/03/19 14:53:06 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/03/21 14:45:56 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := account
 
 CC := c++
 
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -std=c++98
 
 OBJDIR := ./objects/
 
