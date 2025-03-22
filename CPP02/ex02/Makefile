@@ -6,7 +6,7 @@
 #    By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/22 15:44:24 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/03/22 17:03:57 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/03/22 17:17:22 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := fixed
 
 CC := c++
 
-CFLAGS := -Wall -Wextra -Werror -g
+CFLAGS := -Wall -Wextra -Werror
 
 OBJDIR := ./objects/
 
