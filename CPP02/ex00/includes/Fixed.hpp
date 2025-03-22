@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:12:33 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/21 15:44:53 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:46:41 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Fixed
 		Fixed( void );
 		Fixed( Fixed& number );
 		~Fixed( void );
-		Fixed&	operator=( Fixed& number );
+		Fixed&	operator=( Fixed const& number );
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 };
