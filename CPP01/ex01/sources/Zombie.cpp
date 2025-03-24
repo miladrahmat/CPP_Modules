@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 16:25:33 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/19 17:06:30 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:04:38 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ Zombie::Zombie()
 Zombie::~Zombie()
 {
 	std::cout << "Zombie: " << _name << ": is dead" << std::endl;
+}
+
+void	Zombie::setName(std::string name)
+{
+	_name = name;
 }
 
 void	Zombie::announce()

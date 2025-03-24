@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 16:25:25 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/19 17:16:07 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:03:56 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Zombie
 		Zombie( void );
 		Zombie( std::string name );
 		~Zombie( void );
-		
+		void	setName( std::string name );
 		void	announce( void );
 };
 
