@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:38:38 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/20 19:32:17 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:22:43 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
-{
-	_name = name;
-	_weapon = NULL;
-}
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL) {}
 
 HumanB::~HumanB()
 {
