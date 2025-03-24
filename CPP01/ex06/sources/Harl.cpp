@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 22:50:56 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/24 17:23:51 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:29:20 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,29 +56,33 @@ void	Harl::complain(std::string level)
 	switch (i)
 	{
 		case 0:
-		{
 			std::cout << "[ DEBUG ]" << std::endl;
 			this->debug();
-			[[fallthrough]];
-		}
-		case 1:
-		{
 			std::cout << "[ INFO ]" << std::endl;
 			this->info();
-			[[fallthrough]];
-		}
-		case 2:
-		{
 			std::cout << "[ WARNING ]" << std::endl;
 			this->warning();
-			[[fallthrough]];
-		}
-		case 3:
-		{
 			std::cout << "[ ERROR ]" << std:: endl;
 			this->error();
 			break ;
-		}
+		case 1:
+			std::cout << "[ INFO ]" << std::endl;
+			this->info();
+			std::cout << "[ WARNING ]" << std::endl;
+			this->warning();
+			std::cout << "[ ERROR ]" << std:: endl;
+			this->error();
+			break ;
+		case 2:
+			std::cout << "[ WARNING ]" << std::endl;
+			this->warning();
+			std::cout << "[ ERROR ]" << std:: endl;
+			this->error();
+			break ;
+		case 3:
+			std::cout << "[ ERROR ]" << std:: endl;
+			this->error();
+			break ;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
