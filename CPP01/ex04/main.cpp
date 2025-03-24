@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 20:47:29 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/20 22:37:11 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:17:01 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int main(int ac, char **av)
 
 	if (ac != 4)
 		return (std::cerr << "Invalid number of arguments (3 needed)" << std::endl, 1);
+	else if ((std::string)av[2] == "") 
+		return (std::cerr << "Invalid argument (nothing to replace)" << std::endl, 1);
 	inFilename = av[1];
 	outFilename = inFilename + ".replace";
 	infile.open(inFilename, std::fstream::in);
