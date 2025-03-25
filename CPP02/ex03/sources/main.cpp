@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 18:31:57 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/22 20:24:52 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:19:36 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,42 @@ int	main()
 	}
 	std::cout << std::endl << "---------------------------------------------------------------------" << std::endl << std::endl;
 	{
-		Point	a(-1.5, -1.5);
-		Point	b(-2.5, -2.5);
-		Point	c(-1, -2);
-		Point	point(8.5, 9);
+		Point	a(-1, -1);
+		Point	b(-5, -1);
+		Point	c(-1, -5);
+		Point	point(-2, -2);
+
+		std::cout << "The triangle point a ( x: " << a.getX() << " y: " << a.getY() << " )" << std::endl;
+		std::cout << "The triangle point b ( x: " << b.getX() << " y: " << b.getY() << " )" << std::endl;
+		std::cout << "The triangle point c ( x: " << c.getX() << " y: " << c.getY() << " )" << std::endl << std::endl;
+		std::cout << "Is ( x: " << point.getX() << " y: " << point.getY() << " ) located inside the triangle??" << std::endl << std::endl;
+		if (bsp(a, b, c, point))
+			std::cout << "\033[32mYES\033[0m" << std::endl;
+		else
+			std::cout << "\033[32mNO\033[0m" << std::endl;
+	}
+	std::cout << std::endl << "---------------------------------------------------------------------" << std::endl << std::endl;
+	{
+		Point	a(1, -1);
+		Point	b(1, -5);
+		Point	c(5, -1);
+		Point	point(2, -2);
+
+		std::cout << "The triangle point a ( x: " << a.getX() << " y: " << a.getY() << " )" << std::endl;
+		std::cout << "The triangle point b ( x: " << b.getX() << " y: " << b.getY() << " )" << std::endl;
+		std::cout << "The triangle point c ( x: " << c.getX() << " y: " << c.getY() << " )" << std::endl << std::endl;
+		std::cout << "Is ( x: " << point.getX() << " y: " << point.getY() << " ) located inside the triangle??" << std::endl << std::endl;
+		if (bsp(a, b, c, point))
+			std::cout << "\033[32mYES\033[0m" << std::endl;
+		else
+			std::cout << "\033[32mNO\033[0m" << std::endl;
+	}
+	std::cout << std::endl << "---------------------------------------------------------------------" << std::endl << std::endl;
+	{
+		Point	a(-1, 1);
+		Point	b(-1, 5);
+		Point	c(-5, 1);
+		Point	point(-2, 2);
 
 		std::cout << "The triangle point a ( x: " << a.getX() << " y: " << a.getY() << " )" << std::endl;
 		std::cout << "The triangle point b ( x: " << b.getX() << " y: " << b.getY() << " )" << std::endl;
