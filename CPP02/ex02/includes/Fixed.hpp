@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:33:32 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/22 17:02:28 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:23:03 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ class Fixed
 		Fixed( float const number );
 		~Fixed( void );
 		Fixed&	operator=( Fixed const& number );
-		float	operator+( Fixed const& number );
-		float	operator-( Fixed const& number );
-		float	operator*( Fixed const& number );
-		float	operator/( Fixed const& number );
+		Fixed	operator+(Fixed const& number);
+		Fixed	operator-(Fixed const& number);
+		Fixed	operator*(Fixed const& number);
+		Fixed	operator/(Fixed const& number);
 		Fixed&	operator++( void );
 		Fixed	operator++( int );
 		Fixed&	operator--( void );

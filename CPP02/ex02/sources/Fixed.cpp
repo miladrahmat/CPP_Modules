@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:34:15 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/22 17:12:12 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:22:21 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,32 @@ Fixed&	Fixed::operator=(Fixed const& number)
 	return (*this);
 }
 
-float	Fixed::operator+(Fixed const& number)
+Fixed	Fixed::operator+(Fixed const& number)
 {
-	return (this->toFloat() + number.toFloat());
+	Fixed	temp(this->toFloat() + number.toFloat());
+	
+	return (temp);
 }
 
-float	Fixed::operator-(Fixed const& number)
+Fixed	Fixed::operator-(Fixed const& number)
 {
-	return (this->toFloat() - number.toFloat());
+	Fixed	temp(this->toFloat() - number.toFloat());
+	
+	return (temp);
 }
 
-float	Fixed::operator*(Fixed const& number)
+Fixed	Fixed::operator*(Fixed const& number)
 {
-	return (this->toFloat() * number.toFloat());
+	Fixed	temp(this->toFloat() * number.toFloat());
+	
+	return (temp);
 }
 
-float	Fixed::operator/(Fixed const& number)
+Fixed	Fixed::operator/(Fixed const& number)
 {
-	return (this->toFloat() / number.toFloat());
+	Fixed	temp(this->toFloat() / number.toFloat());
+	
+	return (temp);
 }
 
 Fixed	Fixed::operator++(int)
