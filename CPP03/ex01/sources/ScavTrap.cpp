@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:42:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/25 14:38:59 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:09:59 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20), _guarding(fa
 	std::cout << "ScavTrap: Constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap& scav)
+ScavTrap::ScavTrap(ScavTrap& scav) : ClapTrap(scav)
 {
 	std::cout << "ScavTrap: Copy constructor called" << std::endl;
-	*this = scav;
 }
 
 ScavTrap::~ScavTrap()
