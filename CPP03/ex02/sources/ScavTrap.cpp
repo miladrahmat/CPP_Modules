@@ -6,18 +6,18 @@
 /*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:42:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 16:14:30 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:27:07 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Scav", 100, 50, 20), _guarding(false)
+ScavTrap::ScavTrap() : ClapTrap("Scav", _init_hit_points, _init_energy_points, _init_attack_damage), _guarding(false)
 {
 	std::cout << "ScavTrap: Default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20), _guarding(false)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, _init_hit_points, _init_energy_points, _init_attack_damage), _guarding(false)
 {
 	std::cout << "ScavTrap: Constructor called" << std::endl;
 }
@@ -42,16 +42,6 @@ ScavTrap&	ScavTrap::operator=(ScavTrap& scav)
 void	ScavTrap::attack(const std::string& target)
 {
 	this->ClapTrap::attack(target, "ScavTrap");
-}
-
-void	ScavTrap::takeDamage(unsigned int amount)
-{
-	this->ClapTrap::takeDamage(amount, "ScavTrap");
-}
-
-void	ScavTrap::beRepaired(unsigned int amount)
-{
-	this->ClapTrap::beRepaired(amount, "ScavTrap");
 }
 
 void	ScavTrap::guardGate()

@@ -6,18 +6,18 @@
 /*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:48:14 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 16:15:39 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:28:38 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap("Frag", 100, 100, 30)
+FragTrap::FragTrap() : ClapTrap("Frag", _init_hit_points, _init_energy_points, _init_attack_damage)
 {
 	std::cout << "FragTrap: Default constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)
+FragTrap::FragTrap(std::string name) : ClapTrap(name, _init_hit_points, _init_energy_points, _init_attack_damage)
 {
 	std::cout << "FragTrap: Constructor called" << std::endl;
 }
@@ -37,21 +37,6 @@ FragTrap&	FragTrap::operator=(FragTrap& frag)
 	std::cout << "FragTrap: Copy assignment operator called" << std::endl;
 	this->ClapTrap::operator=(frag);
 	return (*this);
-}
-
-void	FragTrap::attack(const std::string& target)
-{
-	this->ClapTrap::attack(target, "FragTrap");
-}
-
-void	FragTrap::takeDamage(unsigned int amount)
-{
-	this->ClapTrap::takeDamage(amount, "FragTrap");
-}
-
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	this->ClapTrap::beRepaired(amount, "FragTrap");
 }
 
 void	FragTrap::highFivesGuys()
