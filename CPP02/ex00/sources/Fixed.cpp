@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:37:14 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/03/22 13:48:31 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:40:41 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Fixed::Fixed()
 	_value = 0;
 }
 
-Fixed::Fixed(Fixed& number)
+Fixed::Fixed(Fixed const& number)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = number;
