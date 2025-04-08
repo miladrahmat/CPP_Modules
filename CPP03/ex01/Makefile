@@ -6,7 +6,7 @@
 #    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/22 20:47:31 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/03/25 13:42:19 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/04/08 18:50:31 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= ScavTrap
 
 CC			:= c++
 
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror --std=c++98
 
 OBJDIR		:= ./objects/
 

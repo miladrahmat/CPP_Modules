@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+         #
+#    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/22 20:47:31 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/04/02 16:03:41 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/04/08 18:50:56 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= FragTrap
 
 CC			:= c++
 
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror --std=c++98
 
 OBJDIR		:= ./objects/
 

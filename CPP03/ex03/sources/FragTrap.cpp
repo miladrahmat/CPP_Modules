@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:48:14 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 18:19:24 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:53:26 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap("Frag", _init_hit_points, _init_energy_points, _init_attack_damage)
+FragTrap::FragTrap() : ClapTrap()
 {
 	std::cout << "FragTrap: Default constructor called" << std::endl;
+	_hit_points = 100;
+	_energy_points = 100;
+	_attack_damage = 30;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name, _init_hit_points, _init_energy_points, _init_attack_damage)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "FragTrap: Constructor called" << std::endl;
+	_hit_points = 100;
+	_energy_points = 100;
+	_attack_damage = 30;
 }
 
 FragTrap::FragTrap(FragTrap& frag) : ClapTrap(frag)
@@ -41,5 +47,5 @@ FragTrap&	FragTrap::operator=(FragTrap& frag)
 
 void	FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->getName() << " requests the highest of fives!" << std::endl;
+	std::cout << "FragTrap " << this->_name << " requests the highest of fives!" << std::endl;
 }

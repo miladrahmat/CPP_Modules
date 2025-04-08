@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:26:31 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 18:04:54 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:33:54 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	~DiamondTrap();
 	DiamondTrap&	operator=( DiamondTrap& diamond );
 	void			whoAmI( void );
+	using	ScavTrap::attack;
 };
 
 #endif

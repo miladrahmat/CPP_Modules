@@ -3,29 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 21:38:59 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 16:17:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:51:41 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
-#include "ScavTrap.hpp"
 
 int	main()
 {
-	FragTrap	clap("Frag");
-	ScavTrap	scav("Scav");
-
-	clap.attack(scav.getName());
-	scav.takeDamage(clap.getAttackDamage());
-	scav.attack(clap.getName());
-	clap.takeDamage(scav.getAttackDamage());
-	clap.attack(scav.getName());
-	scav.guardGate();
-	scav.guardGate();
-	clap.highFivesGuys();
+	FragTrap	clap("Clap");
+	FragTrap	trap("Trap");
+	FragTrap	a(trap);
+	FragTrap	b;
 	
+	a = b;
+
+	clap.attack("Trap");
+	trap.takeDamage(30);
+	trap.attack("Clap");
+	clap.takeDamage(30);
+	clap.attack("Trap");
+	trap.takeDamage(30);
+	clap.beRepaired(10);
+	trap.beRepaired(10);
+	for (int i = 0; i <= 100; i++)
+	{
+		clap.attack("Guy");
+		clap.beRepaired(3);
+		clap.takeDamage(10);
+	}
+	clap.highFivesGuys();
 	return (0);
 }

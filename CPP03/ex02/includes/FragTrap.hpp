@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:41:14 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 18:27:48 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:22:48 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 class FragTrap: public ClapTrap
 {
 	public:
-		const static unsigned int	_init_hit_points = 100;
-		const static unsigned int	_init_energy_points = 100;
-		const static unsigned int	_init_attack_damage = 30;
 		FragTrap( void );
 		FragTrap( std::string name);
 		FragTrap( FragTrap& frag );

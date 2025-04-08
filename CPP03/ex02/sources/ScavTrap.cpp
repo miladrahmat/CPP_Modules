@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:42:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 18:27:07 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:55:08 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Scav", _init_hit_points, _init_energy_points, _init_attack_damage), _guarding(false)
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << "ScavTrap: Default constructor called" << std::endl;
+	_hit_points = 100;
+	_energy_points = 50;
+	_attack_damage = 20;
+	_guarding = false;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, _init_hit_points, _init_energy_points, _init_attack_damage), _guarding(false)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap: Constructor called" << std::endl;
+	_hit_points = 100;
+	_energy_points = 50;
+	_attack_damage = 20;
+	_guarding = false;
+	
 }
 
 ScavTrap::ScavTrap(ScavTrap& scav) : ClapTrap(scav)
@@ -41,19 +50,30 @@ ScavTrap&	ScavTrap::operator=(ScavTrap& scav)
 
 void	ScavTrap::attack(const std::string& target)
 {
-	this->ClapTrap::attack(target, "ScavTrap");
+	if (_hit_points > 0)
+	{
+		if (_energy_points > 0)
+		{
+			std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _attack_damage << " points of damage!" << std::endl;
+			_energy_points--;
+		}
+		else
+			std::cout << "ScavTrap " << _name << " cannot attack and is in desperate need of energy!" << std::endl;
+	}
+	else
+		std::cout << "ScavTrap " << _name << " is dead and beyond repair." << std::endl;
 }
 
 void	ScavTrap::guardGate()
 {
 	if (_guarding == false)
 	{
-		std::cout << "ScavTrap " << this->getName() << " is guarding the gate" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " is guarding the gate" << std::endl;
 		_guarding = true;
 	}
 	else
 	{
-		std::cout << "ScavTrap " << this->getName() << " has left its post" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " has left its post" << std::endl;
 		_guarding = false;
 	}
 }

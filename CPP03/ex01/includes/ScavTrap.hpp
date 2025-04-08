@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:26:31 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 18:25:05 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:26:53 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ class ScavTrap: public ClapTrap
 		bool	_guarding;
 
 	public:
-		const static unsigned int	_init_hit_points = 100;
-		const static unsigned int	_init_energy_points = 50;
-		const static unsigned int	_init_attack_damage = 20;
 		ScavTrap( void );
 		ScavTrap( std::string name );
 		ScavTrap( ScavTrap& scav );

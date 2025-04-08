@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+         #
+#    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/22 20:47:31 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/03/22 20:57:27 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/04/08 18:44:39 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= ClapTrap
 
 CC			:= c++
 
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror --std=c++98
 
 OBJDIR		:= ./objects/
 
