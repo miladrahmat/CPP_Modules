@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:42:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/08 18:48:46 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:28:09 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,19 @@ void	ScavTrap::attack(const std::string& target)
 
 void	ScavTrap::guardGate()
 {
-	if (_guarding == false)
+	if (_hit_points > 0)
 	{
-		std::cout << "ScavTrap " << this->_name << " is guarding the gate" << std::endl;
-		_guarding = true;
+		if (_guarding == false)
+		{
+			std::cout << "ScavTrap " << this->_name << " is guarding the gate" << std::endl;
+			_guarding = true;
+		}
+		else
+		{
+			std::cout << "ScavTrap " << this->_name << " has left its post" << std::endl;
+			_guarding = false;
+		}
 	}
 	else
-	{
-		std::cout << "ScavTrap " << this->_name << " has left its post" << std::endl;
-		_guarding = false;
-	}
+		std::cout << "ScavTrap " << _name << " is dead and beyond repair." << std::endl;
 }
