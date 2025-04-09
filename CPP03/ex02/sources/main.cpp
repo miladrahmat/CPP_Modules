@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 21:38:59 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/08 18:51:41 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:35:23 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,40 @@
 
 int	main()
 {
-	FragTrap	clap("Clap");
-	FragTrap	trap("Trap");
-	FragTrap	a(trap);
-	FragTrap	b;
+	FragTrap	basic;
+	FragTrap	energy("Bob");
+	FragTrap	dead(energy);
 	
-	a = b;
+	basic = dead;
 
-	clap.attack("Trap");
-	trap.takeDamage(30);
-	trap.attack("Clap");
-	clap.takeDamage(30);
-	clap.attack("Trap");
-	trap.takeDamage(30);
-	clap.beRepaired(10);
-	trap.beRepaired(10);
+	std::cout << "\e[1;36m================================ Basic Test ================================\e[0m" << std::endl;
+	basic.attack("Bob");
+	dead.takeDamage(30);
+	basic.attack("Bob");
+	dead.takeDamage(30);
+	basic.attack("Bob");
+	dead.takeDamage(30);
+	dead.beRepaired(10);
+	dead.beRepaired(10);
+	basic.highFivesGuys();
+	energy.highFivesGuys();
+	dead.highFivesGuys();
+
+	std::cout << "\e[1;36m================================ Energy Test ================================\e[0m" << std::endl;
 	for (int i = 0; i <= 100; i++)
 	{
-		clap.attack("Guy");
-		clap.beRepaired(3);
-		clap.takeDamage(10);
+		energy.attack("Guy");
 	}
-	clap.highFivesGuys();
+	
+	std::cout << "\e[1;36m================================ Dead Test ================================\e[0m" << std::endl;
+	for (int x = 0; x <= 100; x++)
+	{
+		dead.takeDamage(1);
+	}
+	std::cout << "\e[1;36m================================ After death Test ================================\e[0m" << std::endl;
+	dead.attack("Guy");
+	dead.beRepaired(1);
+	dead.takeDamage(1);
+	dead.highFivesGuys();
 	return (0);
 }
