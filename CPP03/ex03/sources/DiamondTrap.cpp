@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:48:36 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/08 18:33:21 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:41:52 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ DiamondTrap&	DiamondTrap::operator=(DiamondTrap& diamond)
 
 void	DiamondTrap::whoAmI( void )
 {
-	std::cout << "Am I " << this->_name << " or " << this->ClapTrap::_name << "?" << std::endl;
+	if (_hit_points > 0)
+		std::cout << "Am I " << _name << " or " << ClapTrap::_name << "?" << std::endl;
+	else
+		std::cout << "DiamondTrap " << _name << " is dead and beyond repair." << std::endl;
 }

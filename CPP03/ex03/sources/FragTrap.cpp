@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:48:14 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/08 18:53:26 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:28:49 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ FragTrap&	FragTrap::operator=(FragTrap& frag)
 
 void	FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->_name << " requests the highest of fives!" << std::endl;
+	if (_hit_points > 0)
+		std::cout << "FragTrap " << this->_name << " requests the highest of fives!" << std::endl;
+	else
+		std::cout << "FragTrap " << _name << " is dead and beyond repair." << std::endl;
 }
