@@ -6,7 +6,7 @@
 /*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 20:03:17 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 20:20:21 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:57:03 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	WrongAnimal
 	public:
 		WrongAnimal( void );
 		WrongAnimal( const WrongAnimal& animal );
-		~WrongAnimal();
+		~WrongAnimal( void );
 		WrongAnimal&	operator=( WrongAnimal& animal );
 		void			makeSound( void ) const;
 		std::string		getType( void ) const;

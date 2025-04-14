@@ -6,13 +6,13 @@
 /*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 20:07:40 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 20:18:46 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:59:56 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : _type("Default Animal")
+WrongAnimal::WrongAnimal() : _type("Default WrongAnimal")
 {
 	std::cout << "WrongAnimal: Default constructor called" << std::endl;
 }
@@ -20,7 +20,7 @@ WrongAnimal::WrongAnimal() : _type("Default Animal")
 WrongAnimal::WrongAnimal(const WrongAnimal& animal)
 {
 	std::cout << "WrongAnimal: Copy constructor called" << std::endl;
-	this->_type = animal._type;
+	_type = animal._type;
 }
 
 WrongAnimal::~WrongAnimal()

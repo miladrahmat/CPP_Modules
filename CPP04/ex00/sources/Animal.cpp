@@ -6,7 +6,7 @@
 /*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:57:34 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/02 20:07:02 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:30:10 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Animal::~Animal()
 
 Animal&	Animal::operator=(Animal& animal)
 {
+	std::cout << "Animal: Copy assignment operator called" << std::endl;
 	this->_type = animal._type;
 	return (*this);
 }
