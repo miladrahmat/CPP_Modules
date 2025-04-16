@@ -6,11 +6,11 @@
 #    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 19:30:33 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/04/16 13:52:05 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/04/16 14:54:54 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= PetSimulator
+NAME		:= PetBrainSimulator
 
 CC			:= c++
 
@@ -46,7 +46,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.cpp
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) \
-	&& echo "\e[1;92m PetSimulator ready!\e[0;37m" \
+	&& echo "\e[1;92m PetBrainSimulator ready!\e[0;37m" \
 	|| echo "\e[1;31m ERROR:\e[0;37m Something went terribly wrong.. Try again later."
 
 clean:
