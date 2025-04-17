@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 15:23:58 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/17 16:27:12 by mrahmat-         ###   ########.fr       */
+/*   Created: 2025/04/17 15:32:29 by mrahmat-          #+#    #+#             */
+/*   Updated: 2025/04/17 16:16:02 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_H
-# define ICE_H
+#ifndef MATERIASOURCE_H
+# define MATERIASOURCE_H
 
-# include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 
-class Ice: public AMateria
+class MateriaSource: public IMateriaSource
 {
+	private:
+		AMateria*	_memory[4];
+		
 	public:
-		Ice( void );
-		Ice( const Ice& materia);
-		~Ice( void );
-		Ice&	operator=( const Ice& materia );
-		AMateria*	clone() const;
-		void	use( ICharacter& target );
+		MateriaSource( void );
+		MateriaSource( const MateriaSource& source );
+		~MateriaSource( void );
+		MateriaSource&	operator=( const MateriaSource& source );
+		void	learnMateria( AMateria* m );
+		AMateria*	createMateria(std::string const& type );
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:04:28 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/16 16:05:07 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:27:08 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Cure: public AMateria
 		~Cure( void );
 		Cure&	operator=( const Cure& materia );
 		AMateria*	clone() const;
-		void	use(ICharacter& target);
+		void	use( ICharacter& target );
 };
 
 #endif

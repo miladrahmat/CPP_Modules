@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:05:16 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/16 16:09:54 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:18:38 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cure::~Cure()
 
 Cure&	Cure::operator=(const Cure& materia)
 {
-	this->AMateria::operator=(materia);
+	AMateria::operator=(materia);
 	return(*this);
 }
 

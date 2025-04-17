@@ -6,15 +6,15 @@
 #    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 19:30:33 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/04/16 13:52:05 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/04/17 16:21:18 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= PetSimulator
+NAME		:= ColdWar
 
 CC			:= c++
 
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror -g
 
 OBJDIR		:= ./objects/
 
@@ -24,13 +24,12 @@ SRCDIR		:= ./sources/
 
 INC			:= -I $(INCDIR)
 
-SRC_FILES	:= Animal.cpp \
-			Brain.cpp \
-			Cat.cpp \
-			Dog.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp \
-			main.cpp
+SRC_FILES	:= AMateria.cpp \
+				Cure.cpp \
+				Ice.cpp \
+				Character.cpp \
+				MateriaSource.cpp \
+				main.cpp
 
 SRCS		:= $(addprefix $(SRCDIR), $(SRC_FILES))
 
@@ -46,7 +45,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.cpp
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) \
-	&& echo "\e[1;92m PetSimulator ready!\e[0;37m" \
+	&& echo "\e[1;92m ColdWar simulator ready!\e[0;37m" \
 	|| echo "\e[1;31m ERROR:\e[0;37m Something went terribly wrong.. Try again later."
 
 clean:

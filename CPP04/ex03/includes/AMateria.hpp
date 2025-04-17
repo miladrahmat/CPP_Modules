@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:56:29 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/16 15:40:07 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:27:03 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ class AMateria
 	public:
 		AMateria( std::string const& type);
 		AMateria( const AMateria& materia );
-		~AMateria();
+		virtual ~AMateria();
 		AMateria&	operator=( const AMateria& materia );
 		std::string const&	getType( void ) const;
 		virtual AMateria*	clone( void ) const = 0;
-		virtual void	use(ICharacter& target);
+		virtual void	use( ICharacter& target );
 };
 
 #endif

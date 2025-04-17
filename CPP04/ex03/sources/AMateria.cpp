@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:29:04 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/16 15:45:06 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:26:07 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ AMateria::~AMateria()
 
 }
 
+AMateria&	AMateria::operator=(const AMateria& materia)
+{
+	this->_type = materia._type;
+	return (*this);
+}
+
 std::string const&	AMateria::getType() const
 {
 	return (_type);
@@ -34,8 +40,5 @@ std::string const&	AMateria::getType() const
 
 void	AMateria::use(ICharacter& target)
 {
-	if (_type.compare("ice") == 0)
-		std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	else if (_type.compare("cure") == 0)
-		std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << "* Default action at " << target.getName() << " *" << std::endl;
 }

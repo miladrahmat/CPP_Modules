@@ -6,15 +6,16 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:02:23 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/16 15:10:06 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:09:28 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_H
 # define ICHARACTER_H
 
-# include "AMateria.hpp"
+# include <iostream>
 
+class AMateria;
 class ICharacter
 {
 	public:

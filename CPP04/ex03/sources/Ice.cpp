@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:45:47 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/16 16:08:25 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:18:41 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Ice::~Ice()
 
 Ice&	Ice::operator=(const Ice& materia)
 {
-	this->AMateria::operator=(materia);
+	AMateria::operator=(materia);
 	return (*this);
 }
 
