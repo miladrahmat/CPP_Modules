@@ -6,11 +6,14 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 11:59:40 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/25 12:53:56 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:53:34 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
+
+# include <iostream>
 
 class Bureaucrat
 {
@@ -55,3 +58,5 @@ class Bureaucrat::GradeTooLowException : public std::exception
 		GradeTooLowException();
 		const char	*what() const throw();
 };
+
+#endif
