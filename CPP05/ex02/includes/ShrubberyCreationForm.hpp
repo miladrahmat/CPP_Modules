@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:30:16 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/06 16:15:27 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:32:42 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 class ShrubberyCreationForm : public AForm
 {
+	private:
+		std::string	_target;
+
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string name);
