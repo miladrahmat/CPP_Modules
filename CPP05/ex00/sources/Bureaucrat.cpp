@@ -6,15 +6,15 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:05:00 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/04/25 13:10:25 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:31:18 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Default name"), _grade(150)
+Bureaucrat::Bureaucrat() : _name("Default name"), _grade(_min_grade)
 {
-	
+
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
