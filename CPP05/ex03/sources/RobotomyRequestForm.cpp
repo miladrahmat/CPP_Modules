@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:28:47 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/06 16:37:34 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:06:51 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequest", 72, 45), _
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string name) : AForm("RobotomyRequest", 72, 45), _target(name)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequest", 72, 45), _target(target)
 {
 	
 }

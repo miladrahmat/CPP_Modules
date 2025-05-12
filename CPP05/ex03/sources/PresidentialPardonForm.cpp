@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:57:00 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/06 16:37:25 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:06:41 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardon", 2
 
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string name) : AForm("PresidentialPardon", 25, 5), _target(name)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardon", 25, 5), _target(target)
 {
 	
 }

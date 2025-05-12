@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:40:21 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/06 16:39:36 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:06:59 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreation", 145,
 	
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name) : AForm("ShrubberyCreation", 145, 137), _target(name)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreation", 145, 137), _target(target)
 {
 	
 }
