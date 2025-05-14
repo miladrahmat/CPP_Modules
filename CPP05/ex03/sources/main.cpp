@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:51:46 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:38:22 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:25:11 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,15 +208,27 @@ int	main()
 		AForm*	form;
 		AForm*	form1;
 		AForm*	form2;
+		AForm*	form3;
 
 		form = tom.makeForm("presidential pardon", "Mike");
-		std::cout << *form << std::endl;
+		if (form != nullptr) {
+			std::cout << *form << std::endl;
+			delete form;
+		}
 		form1 = tom.makeForm("robotomy request", "Bender");
-		std::cout << *form1 << std::endl;
+		if (form1 != nullptr) {
+			std::cout << *form1 << std::endl;
+			delete form1;
+		}
 		form2 = tom.makeForm("shrubbery creation", "home");
-		std::cout << *form2 << std::endl;
-		delete form;
-		delete form1;
-		delete form2;
+		if (form2 != nullptr) {
+			std::cout << *form2 << std::endl;
+			delete form2;
+		}
+		form3 = tom.makeForm("nonexistent", "nonexistent");
+		if (form3 != nullptr) {
+			std::cout << *form3 << std::endl;
+			delete form3;
+		}
 	}
 }
