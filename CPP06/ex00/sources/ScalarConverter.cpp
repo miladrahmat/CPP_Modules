@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 12:20:51 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/14 15:20:14 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:53:47 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static std::string	getChar(int i)
 		char c = static_cast<char>(i);
 		if (std::isprint(c) != 0) {
 			std::string s1{c};
-			return (s1);
+			return ("'" + s1 + "'");
 		}
 		else
 			return ("Non displayable");
@@ -50,7 +50,7 @@ static void	printResult(std::string& c_res, std::string i_res, std::string f_res
 
 static int	getType(std::string& str)
 {
-	if (str.length() == 1)
+	if (str.length() == 1 && std::isdigit(str.at(0)) == 0)
 		return (CHAR);
 	else if (str.find('.') == str.npos)
 		return (INT);
@@ -103,7 +103,7 @@ void	ScalarConverter::convert(std::string& str)
 	switch (getType(str)) {
 		case CHAR:
 			if (std::isprint(str.at(0)) != 0)
-				c_res = str;
+				c_res = "'" + str + "'";
 			else
 				c_res = "Non displayable";
 			if (std::isdigit(str.at(0)) == 0) {
