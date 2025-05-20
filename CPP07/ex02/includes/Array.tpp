@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:40:17 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/20 17:05:10 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:20:27 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Array<T>&	Array<T>::operator=(Array const& arr)
 template <typename T>
 T&	Array<T>::operator[](size_t index)
 {
-	if (index > _size - 1)
+	if (index > _size - 1 || _size == 0)
 		throw (OutOfBoundsException());
 	return (_memory[index]);
 }

@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:55:08 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/20 17:06:42 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:21:49 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,20 @@ int main()
 		try {
 			std::cout << arr[9] << std::endl;
 		} catch (std::exception& e) {
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 		try {
 			std::cout << arr[10] << std::endl;
 		} catch (std::exception& e) {
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
+		}
+
+		Array<int>	arr;
+
+		try {
+			std::cout << arr[0] << std::endl;
+		} catch (std::exception& e) {
+			std::cerr << e.what() << std::endl;
 		}
 	}
 }
