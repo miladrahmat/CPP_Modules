@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:45:07 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/21 12:31:12 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:41:59 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <climits>
+#include <limits>
 
 Span::Span() : _memory(0), _size(0)
 {
@@ -57,14 +57,19 @@ int	Span::shortestSpan()
 {
 	std::vector<int>::iterator	start = _memory.begin();
 	std::vector<int>::iterator	end = _memory.end();
-	int							res = INT_MAX;
+	int							res = std::numeric_limits<int>::max();
 	
 	if (_memory.size() == 0 || _memory.size() == 1)
 		throw NoSpanFoundException();
 	while (end > start) {
-		while (start != end) {
-			if (*end - *start < res)
-				res = *end - *start;
+		while (start < end) {
+			if (*end - *start >= 0) {
+				if (*end - *start < res)
+					res = *end - *start;
+			} else {
+				if (*start - *end < res)
+					res = *start - *end;
+			}
 			start++;
 		}
 		start = _memory.begin();
@@ -77,14 +82,19 @@ int	Span::longestSpan()
 {
 	std::vector<int>::iterator	start = _memory.begin();
 	std::vector<int>::iterator	end = _memory.end();
-	int							res = INT_MIN;
+	int							res = std::numeric_limits<int>::min();
 	
 	if (_memory.size() == 0 || _memory.size() == 1)
 		throw NoSpanFoundException();
 	while (end > start) {
-		while (start != end) {
-			if (*end - *start > res)
-				res = *end - *start;
+		while (start < end) {
+			if (*end - *start >= 0) {
+				if (*end - *start > res)
+					res = *end - *start;
+			} else {
+				if (*start - *end > res)
+					res = *end - *start;
+			}
 			start++;
 		}
 		start = _memory.begin();

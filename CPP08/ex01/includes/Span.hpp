@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:33:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/21 12:24:16 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:56:45 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Span
 		void	addNumber(int num);
 		int		shortestSpan();
 		int		longestSpan();
+		template <typename T> void	addRange(T start, T end);
 		class	OutOfMemoryException;
 		class	NoSpanFoundException;
 };
@@ -52,3 +53,11 @@ class Span::NoSpanFoundException : public std::exception
 		NoSpanFoundException();
 		const char* what() const throw();
 };
+
+template <typename T>
+void	Span::addRange(T start, T end)
+{
+	if (_size < std::distance(start, end))
+		throw OutOfMemoryException();
+	_memory.insert(_memory.begin(), start, end);
+}
