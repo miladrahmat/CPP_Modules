@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:45:07 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/05/23 12:53:32 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/05/29 14:32:02 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	Span::longestSpan()
 		throw NoSpanFoundException();
 	std::sort(temp.begin(), temp.end());
 	while (start < temp.end()) {
-		res = std::max(std::abs(*start - *temp.end()), res);
+		res = std::max(std::abs(*start - *(temp.end() - 1)), res);
 		start++;
 	}
 	return (res);
