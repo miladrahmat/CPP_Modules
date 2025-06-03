@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+         #
+#    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/12 12:33:24 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/05/21 12:22:00 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/06/03 17:41:08 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= Span
+NAME		:= MutantStack
 
 CC			:= c++
 
@@ -24,8 +24,7 @@ SRCDIR		:= ./sources/
 
 INC			:= -I $(INCDIR)
 
-SRC_FILES	:= Span.cpp \
-				main.cpp
+SRC_FILES	:= main.cpp
 
 SRCS		:= $(addprefix $(SRCDIR), $(SRC_FILES))
 
@@ -41,7 +40,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.cpp
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) \
-	&& echo "\e[1;92m Span ready!\e[0;37m" \
+	&& echo "\e[1;92m MutantStack ready!\e[0;37m" \
 	|| echo "\e[1;31m ERROR:\e[0;37m Something went terribly wrong.. Try again later."
 
 clean:
