@@ -10,7 +10,7 @@
 
 ### Output should be:
 
-```year-moth-day => amount of bitcoin in the account => account value``
+```year-moth-day => amount of bitcoin in the account => account value```
 
 ## ex01 : stack
 
