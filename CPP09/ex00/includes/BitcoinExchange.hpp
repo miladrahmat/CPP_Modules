@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:46:52 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/06/09 18:18:00 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:53:33 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <map>
 #include <string>
 #include <fstream>
+#include <ctime>
 
 class BitcoinExchange
 {
@@ -26,5 +27,4 @@ class BitcoinExchange
 		~BitcoinExchange();
 		BitcoinExchange&	operator=(BitcoinExchange& other);
 		float	getValue(std::string date);
-		
 };

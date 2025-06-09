@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:17:48 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/06/09 18:44:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:52:38 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ int	main(int ac, char **av)
 	try {
 		BitcoinExchange	bit;
 		std::string	line;
+		struct tm	tm;
 		while (std::getline(input, line)) {
-			if (line.find_first_of('|') == line.npos)
-				std::cerr << "Error: bad input => " << line << std::endl;
-			else {
 				std::string	date = line.substr(0, line.find_first_of('|') - 1);
-				float	amount = std::stof(line.substr(line.find_first_of('|') + 1, line.npos));
-				if (amount < 0)
-					std::cerr << "Error: not a positive number." << std::endl;
-				else if (amount > 1000)
-					std::cerr << "Error: too large a number." << std::endl;
-				else
-					std::cout << date << " => " << amount << " = " << amount * bit.getValue(date) << std::endl; 
+				if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
+					std::cerr << "Error: bad input => " << date << std::endl;
+				else {
+					float	amount = std::stof(line.substr(line.find_first_of('|') + 1, line.npos));
+					if (amount < 0)
+						std::cerr << "Error: not a positive number." << std::endl;
+					else if (amount > 1000)
+						std::cerr << "Error: too large a number." << std::endl;
+					else
+						std::cout << date << " => " << amount << " = " << amount * bit.getValue(date) << std::endl; 
 			}
 		}
 	} catch (std::exception& e) {
