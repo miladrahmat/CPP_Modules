@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 13:55:55 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/07/22 14:45:54 by mrahmat-         ###   ########.fr       */
+/*   Created: 2025/07/22 14:26:56 by mrahmat-          #+#    #+#             */
+/*   Updated: 2025/07/22 14:30:03 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "RPN.hpp"
 
-#include <stack>
-#include <iostream>
-
-class	RPN {
-	private:
-		std::stack<int>	_result;
+int main(int ac, char** av) {
+	if (ac > 2) {
+		std::cerr << "Error: Invalid input" << std::endl;
+		return (1);
+	}
+	try {
+		RPN	rpn;
+		std::string	input(av[1]);
 		
-	public:
-		RPN() = default;
-		RPN(RPN const& other) = default;
-		~RPN() = default;
-		RPN&	operator=(RPN const& other) = default;
-		void	calculate(std::string& nums);
-};
+		rpn.calculate(input);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return (1);
+	}
+	return (0);
+}
