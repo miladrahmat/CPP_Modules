@@ -45,6 +45,7 @@ invalid_case8="3 7.1 *"
 invalid_case9="9 9 9 9 + +"
 
 CYAN="\e[1;36m"
+YELLOW="\e[1;93m"
 GREEN="\e[1;92m"
 RED="\e[1;91m"
 RESET="\e[0m"
@@ -58,7 +59,7 @@ fi
 
 # Test for valid cases
 
-printf "\n\n$CYAN Valid cases: $RESET\n\n"
+printf "\n\n$YELLOW Valid cases: $RESET\n\n"
 
 printf "$CYAN Test 1: $RESET\n"
 echo $res_case1 > expected.txt
@@ -255,7 +256,7 @@ rm -f expected.txt
 rm -f RPN.txt
 rm -f result.txt
 
-printf "\n\n$CYAN Invalid cases: $RESET\n\n"
+printf "\n\n$YELLOW Invalid cases: $RESET\n\n"
 
 printf "$CYAN Test 1: $RESET\n"
 $program "$invalid_case1" 2> /dev/null
@@ -328,5 +329,7 @@ if [ $? -ne 0 ]; then
 else
 	printf "\t $RED FAILURE $RESET\n\n"
 fi
+
+make fclean
 
 exit 0
