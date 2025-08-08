@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:20:02 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/07 18:25:00 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/08 22:32:40 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ T next_pair(T iterator, int pair_size) {
 }
 
 template <typename T>
-bool compare(T& left, T& right) {
+bool compare(const T& left, const T& right) {
 	PmergeMe::_comparisons++;
-	return (*left > *right);
+	return (*left < *right);
 }
 
 template <typename T>
@@ -55,6 +55,20 @@ void PmergeMe::swap(T& iterator, int pair_size) {
 		std::iter_swap(start, next_pair(start, pair_size));
 		start++;
 	}
+}
+
+template <typename T>
+T binarySearch(T first, T last, T value) {
+	while (first != last) {
+		T middle = first + (last - first) / 2;
+		if (compare(*value, *middle)) {
+			last = middle;
+		}
+		else {
+			first = middle + 1;
+		}
+	}
+	return first;
 }
 
 template <typename T>
@@ -80,7 +94,7 @@ void PmergeMe::sort(T& container, int pair_size) {
 	for (Iterator it = start; it != end; std::advance(it, next_pair_loc)) {
 		Iterator curr = next_pair(it, pair_size - 1);
 		Iterator next = next_pair(it, pair_size * 2 - 1);
-		if (compare(curr, next)) {
+		if (!compare(curr, next)) {
 			swap(curr, pair_size);
 		}
 	}
@@ -108,4 +122,79 @@ void PmergeMe::sort(T& container, int pair_size) {
 		std::cout << **it << " ";
 	}
 	std::cout << std::endl;
+
+	int inserted_items = 1;
+	int prev_jacobsthal = 1;
+	int curr_jacobsthal = 1;
+	while (!pend.empty()) {
+		int temp = curr_jacobsthal;
+		curr_jacobsthal = curr_jacobsthal + 2 * prev_jacobsthal;
+		std::cout << curr_jacobsthal << std::endl;
+		prev_jacobsthal = temp;
+		int offset = 0;
+		int index = curr_jacobsthal - inserted_items;
+		if (index > static_cast<int>(pend.size())) {
+			break ;
+		}
+		typename std::vector<Iterator>::iterator pend_it = next_pair(pend.begin(), index - 1);
+		int main_index = curr_jacobsthal + inserted_items;
+		if (main_index >= static_cast<int>(main.size())) {
+			main_index = main.size() - 1;
+		}
+		typename std::vector<Iterator>::iterator main_it = next_pair(main.begin(), main_index);
+		while (index) {
+			std::cout << "main_it = " << **main_it << std::endl;
+			// typename std::vector<Iterator>::iterator found = std::upper_bound(main.begin(), main_it, *pend_it, compare<Iterator>);
+			typename std::vector<Iterator>::iterator found = binarySearch(main.begin(), main_it + 1, pend_it);
+			// std::cout << "Found = " << **found << std::endl;
+			std::cout << "Inserting into main: " << **pend_it << std::endl;
+			typename std::vector<Iterator>::iterator inserted = main.insert(found, *pend_it);
+			pend.erase(pend_it);
+			if (inserted - main.begin() == curr_jacobsthal + inserted_items) {
+				offset++;
+			}
+			main_it = next_pair(main.begin(), curr_jacobsthal + inserted_items - offset);
+			if (pend_it == pend.end()) {
+				break ;
+			}
+			pend_it--;
+			index--;
+			inserted_items++;
+		}
+	}
+	
+	if (!pend.empty()) {
+		for (ssize_t i = pend.size() - 1; i >= 0; i--) {
+			typename std::vector<Iterator>::iterator pend_it = next_pair(pend.begin(), i);
+			int main_index = main.size() - pend.size() + i + odd;
+			if (main_index >= static_cast<int>(main.size())) {
+				main_index = main.size() - 1;
+			}
+			typename std::vector<Iterator>::iterator main_it = next_pair(main.begin(), main_index);
+			std::cout << "main_it: " << **main_it << std::endl;
+			// typename std::vector<Iterator>::iterator found = std::upper_bound(main.begin(), main.end(), *pend_it, compare<Iterator>);
+			typename std::vector<Iterator>::iterator found = binarySearch(main.begin(), main.end(), pend_it);
+			// std::cout << "Found: " << **found << std::endl;
+			std::cout << "Inserting " << **pend_it << " into main" << std::endl;
+			/* if (found == main_it)
+				main.insert(found + 1, *pend_it);
+			else
+				main.insert(found, *pend_it); */
+			main.insert(found, *pend_it);
+		}
+	}
+
+	std::vector<int> sorted;
+	for (typename std::vector<Iterator>::iterator main_it = main.begin(); main_it != main.end(); main_it++) {
+		for (int i = 0; i < pair_size; i++) {
+			Iterator pair = *main_it;
+			std::advance(pair, -pair_size + i + 1);
+			std::cout << "Pushing " << *pair << " into sorted" << std::endl;
+			sorted.push_back(*pair);
+		}
+	}
+
+	for (std::vector<int>::size_type i = 0; i < sorted.size(); ++i) {
+		container[i] = sorted[i];
+	}
 }
