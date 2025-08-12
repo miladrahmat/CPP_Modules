@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:03:11 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/07 17:32:29 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:25:50 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ PmergeMe& PmergeMe::operator=(PmergeMe const& other) {
 PmergeMe::~PmergeMe() {}
 
 void	PmergeMe::sort_vec(std::vector<int>& vec) {
+	PmergeMe::_comparisons = 0;
 	sort(vec, 1);
 }
 
 void	PmergeMe::sort_deq(std::deque<int>& deq) {
+	PmergeMe::_comparisons = 0;
 	sort(deq, 1);
 }

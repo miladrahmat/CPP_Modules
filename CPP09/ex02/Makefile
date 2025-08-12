@@ -6,7 +6,7 @@
 #    By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 18:40:45 by mrahmat-          #+#    #+#              #
-#    Updated: 2025/08/07 17:35:12 by mrahmat-         ###   ########.fr        #
+#    Updated: 2025/08/12 16:51:40 by mrahmat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME		:= PmergeMe
 
 CC			:= c++
 
-CFLAGS		:= -Wall -Wextra -Werror -MMD -g
+CFLAGS		:= -Wall -Wextra -Werror -MMD
 
 OBJDIR		:= ./objects_and_dependencies/
 
@@ -51,6 +51,11 @@ $(OBJDIR)%.o: $(SRCDIR)%.cpp
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) \
 	&& echo "$(GREEN) Ready to sort some numbers!$(RESET)" \
+	|| echo "$(RED) ERROR:$(RESET) Something went terribly wrong.. Try again later."
+
+debug: fclean
+	@$(MAKE) CFLAGS="$(CFLAGS) -D DEBUG=1 -g" > /dev/null \
+	&& echo "$(GREEN) Ready to sort some numbers with debugging prints!$(RESET)" \
 	|| echo "$(RED) ERROR:$(RESET) Something went terribly wrong.. Try again later."
 
 clean:

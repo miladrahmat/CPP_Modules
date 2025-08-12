@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:20:02 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/12 15:36:08 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:51 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include <algorithm>
 #include <vector>
 #include <deque>
+#include <chrono>
+
+#ifndef DEBUG
+# define DEBUG 0
+#endif
 
 class PmergeMe {
 	private:
@@ -138,8 +143,11 @@ void PmergeMe::sort(T& container, int pair_size) {
 			pend.erase(pend_it);
 			pend_bound.erase(next_pair(pend_bound.begin(), index - 1));
 			index--;
+			if (index == 0) {
+				break ;
+			}
 			pend_it = next_pair(pend.begin(), index - 1);
-			main_bound_index = *(next_pair(pend_bound.begin(), index - 1));
+			main_bound_index = pend_bound[index - 1];
 			if (main_bound_index >= main.size()) {
 				main_it = main.end();
 			}
