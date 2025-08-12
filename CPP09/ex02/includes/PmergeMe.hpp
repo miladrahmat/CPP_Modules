@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:20:02 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/11 15:42:07 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:36:08 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ T next_pair(T iterator, int pair_size) {
 template <typename T>
 bool compare(const T& left, const T& right) {
 	PmergeMe::_comparisons++;
-	std::cout << "Now compared " << PmergeMe::_comparisons << " times" << std::endl;
 	return (*left < *right);
 }
 
@@ -56,23 +55,6 @@ void PmergeMe::swap(T& iterator, int pair_size) {
 		std::iter_swap(start, next_pair(start, pair_size));
 		start++;
 	}
-}
-
-template <typename T>
-T binarySearch(T first, T last, T value) {
-	while (first != last) {
-		T middle = (first + (last - first) / 2);
-		std::cout << "Middle is " << **middle << std::endl;
-		std::cout << "Comparing in binary search.." << std::endl;
-		if (compare(*value, *middle)) {
-			last = middle;
-		}
-		else {
-			first = middle + 1;
-		}
-		std::cout << "First = " << **first << "	middle = " << **middle << "	last = " << **last << std::endl;
-	}
-	return first;
 }
 
 template <typename T>
@@ -98,7 +80,6 @@ void PmergeMe::sort(T& container, int pair_size) {
 	for (Iterator it = start; it != end; std::advance(it, next_pair_loc)) {
 		Iterator curr = next_pair(it, pair_size - 1);
 		Iterator next = next_pair(it, pair_size * 2 - 1);
-		std::cout << "Comparing in pair swap" << std::endl;
 		if (!compare(curr, next)) {
 			swap(curr, pair_size);
 		}
@@ -107,26 +88,21 @@ void PmergeMe::sort(T& container, int pair_size) {
 
 	std::vector<Iterator> main;
 	std::vector<Iterator> pend;
+	std::vector<size_t> pend_bound;
 
+	main.reserve(pairs + odd);
+	pend_bound.reserve(pairs);
 	main.push_back(next_pair(container.begin(), pair_size - 1));
 	main.push_back(next_pair(container.begin(), 2 * pair_size - 1));
 	for (int i = 3; i < pairs; i += 2) {
 		pend.push_back(next_pair(container.begin(), i * pair_size - 1));
-		main.push_back(next_pair(container.begin(), (i + 1) * pair_size - 1));
+		typename std::vector<Iterator>::iterator inserted = main.insert(main.end(), next_pair(container.begin(), (i + 1) * pair_size - 1));
+		pend_bound.push_back(std::distance(main.begin(), inserted));
 	}
 	if (odd == 1) {
 		pend.push_back(next_pair(end, pair_size - 1));
+		pend_bound.push_back(main.size());
 	}
-	std::cout << "Main chain when pair size is " << pair_size << ": ";
-	for (auto it = main.begin(); it != main.end(); ++it) {
-		std::cout << **it << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "Pend chain when pair size is " << pair_size << ": ";
-	for (auto it = pend.begin(); it != pend.end(); ++it) {
-		std::cout << **it << " ";
-	}
-	std::cout << std::endl;
 
 	int inserted_items = 1;
 	int prev_jacobsthal = 1;
@@ -134,84 +110,64 @@ void PmergeMe::sort(T& container, int pair_size) {
 	while (!pend.empty()) {
 		int temp = curr_jacobsthal;
 		curr_jacobsthal = curr_jacobsthal + 2 * prev_jacobsthal;
-		std::cout << "Jacobsthal of: " << curr_jacobsthal << std::endl;
 		prev_jacobsthal = temp;
-		int offset = 0;
 		int index = curr_jacobsthal - inserted_items;
 		if (index > static_cast<int>(pend.size())) {
 			break ;
 		}
 		typename std::vector<Iterator>::iterator pend_it = next_pair(pend.begin(), index - 1);
-		int main_index = curr_jacobsthal + inserted_items - 1;
-		if (main_index >= static_cast<int>(main.size())) {
-			main_index = main.size() - 1;
+		size_t main_bound_index = *(next_pair(pend_bound.begin(), index - 1));
+		typename std::vector<Iterator>::iterator main_it;
+		if (main_bound_index >= main.size()) {
+			main_it = main.end();
 		}
-		typename std::vector<Iterator>::iterator main_it = next_pair(main.begin(), main_index);
+		else {
+			main_it = next_pair(main.begin(), main_bound_index);
+		}
 		while (index) {
-			// std::cout << "main_it = " << **main_it << std::endl;
 			typename std::vector<Iterator>::iterator found = std::upper_bound(main.begin(), main_it, *pend_it, compare<Iterator>);
 			typename std::vector<Iterator>::iterator inserted;
-			std::cout << "Inserting into main: " << **pend_it << std::endl;
-			if (found == main_it) {
-				if (compare(*pend_it, *main_it)) {
-					inserted = main.insert(main_it, *pend_it);
-				}
-				else {
-					std::cout << "Inserting at the end" << std::endl;
-					inserted = main.insert(main.end(), *pend_it);
+			inserted = main.insert(found, *pend_it);
+			size_t insertion_index = std::distance(main.begin(), inserted);
+			for (size_t& bound_index : pend_bound) {
+				if (bound_index != main.size() && bound_index >= insertion_index) {
+					bound_index++;
 				}
 			}
-			// typename std::vector<Iterator>::iterator found = binarySearch(main.begin(), main_it + 1, pend_it);
-			// std::cout << "Found = " << **found << std::endl;
-			else {
-				inserted = main.insert(found, *pend_it);
-			}
+			
 			pend.erase(pend_it);
-			if (inserted - main.begin() == curr_jacobsthal + inserted_items) {
-				offset++;
-			}
-			main_it = next_pair(main.begin(), curr_jacobsthal + inserted_items - offset - 1);
-			/* if (pend_it == pend.end()) {
-				break ;
-			} */
-			pend_it--;
+			pend_bound.erase(next_pair(pend_bound.begin(), index - 1));
 			index--;
+			pend_it = next_pair(pend.begin(), index - 1);
+			main_bound_index = *(next_pair(pend_bound.begin(), index - 1));
+			if (main_bound_index >= main.size()) {
+				main_it = main.end();
+			}
+			else {
+				main_it = next_pair(main.begin(), main_bound_index);
+			}
 			inserted_items++;
 		}
 	}
-	
 	if (!pend.empty()) {
 		for (ssize_t i = pend.size() - 1; i >= 0; i--) {
 			typename std::vector<Iterator>::iterator pend_it = next_pair(pend.begin(), i);
-			int main_index = main.size() - pend.size() + i + odd;
-			if (main_index >= static_cast<int>(main.size())) {
-				main_index = main.size() - 1;
+			size_t main_bound_index = *(next_pair(pend_bound.begin(), i));
+			typename std::vector<Iterator>::iterator main_it;
+			if (main_bound_index >= main.size()) {
+				main_it = main.end();
 			}
-			typename std::vector<Iterator>::iterator main_it = next_pair(main.begin(), main_index);
-			// std::cout << "main_it: " << **main_it << std::endl;
-			typename std::vector<Iterator>::iterator found = std::upper_bound(main.begin(), main_it, *pend_it, compare<Iterator>);
-			if (found == main_it) {
-				if (compare(*pend_it, *found)) {
-					main.insert(found, *pend_it);
-				}
-				else {
-					std::cout << "Inserting at the end" << std::endl;
-					main.insert(main.end(), *pend_it);
-				}
-			}
-			// typename std::vector<Iterator>::iterator found = binarySearch(main.begin(), main_it + 1, pend_it);
-			// std::cout << "Found = " << **found << std::endl;
 			else {
-				main.insert(found, *pend_it);
+				main_it = next_pair(main.begin(), main_bound_index);
 			}
-			// typename std::vector<Iterator>::iterator found = binarySearch(main.begin(), main.end(), pend_it);
-			// std::cout << "Found: " << **found << std::endl;
-			std::cout << "Inserting " << **pend_it << " into main" << std::endl;
-			/* if (found == main_it)
-				main.insert(found + 1, *pend_it);
-			else
-				main.insert(found, *pend_it); */
-			// main.insert(found, *pend_it);
+			typename std::vector<Iterator>::iterator found = std::upper_bound(main.begin(), main_it, *pend_it, compare<Iterator>);
+			typename std::vector<Iterator>::iterator inserted = main.insert(found, *pend_it);
+			size_t insertion_index = std::distance(main.begin(), inserted);
+			for (size_t& bound_index : pend_bound) {
+				if (bound_index != main.size() && bound_index >= insertion_index) {
+					bound_index++;
+				}
+			}
 		}
 	}
 
@@ -220,7 +176,6 @@ void PmergeMe::sort(T& container, int pair_size) {
 		for (int i = 0; i < pair_size; i++) {
 			Iterator pair = *main_it;
 			std::advance(pair, -pair_size + i + 1);
-			std::cout << "Pushing " << *pair << " into sorted" << std::endl;
 			sorted.push_back(*pair);
 		}
 	}
