@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:59:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/06/09 20:38:12 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:35:31 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ float	BitcoinExchange::getValue(std::string date)
 {
 	std::map<std::string, float>::key_compare	comp = _data.key_comp();
 	std::map<std::string, float>::iterator	it = _data.begin();
-	std::map<std::string, float>::iterator	res;
+	std::map<std::string, float>::iterator	res = _data.end();
 	
 	for (size_t i = 0; i < _data.size(); i++) {
 		if (comp(it->first, date) || it->first.compare(date) == 0)
 			res = it;
 		++it;
+	}
+	if (res == _data.end() || res->first.compare(date) != 0) {
+		return (-1);
 	}
 	return (res->second);
 }

@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:17:48 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/06/09 20:52:38 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:34:13 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,15 @@ int	main(int ac, char **av)
 						std::cerr << "Error: not a positive number." << std::endl;
 					else if (amount > 1000)
 						std::cerr << "Error: too large a number." << std::endl;
-					else
-						std::cout << date << " => " << amount << " = " << amount * bit.getValue(date) << std::endl; 
+					else {
+						float value = bit.getValue(date);
+						if (value == -1) {
+							std::cerr << "Error: date not found" << std::endl;
+						}
+						else {
+							std::cout << date << " => " << amount << " = " << amount * value << std::endl; 
+						}
+					}
 			}
 		}
 	} catch (std::exception& e) {
