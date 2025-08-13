@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:20:02 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:51 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:20:18 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ T next_pair(T iterator, int pair_size) {
 
 template <typename T>
 bool compare(const T& left, const T& right) {
+	if (DEBUG) {
+		std::cout << "Comparing" << std::endl;
+	}
 	PmergeMe::_comparisons++;
 	return (*left < *right);
 }
@@ -59,6 +62,49 @@ void PmergeMe::swap(T& iterator, int pair_size) {
 	while (start != end) {
 		std::iter_swap(start, next_pair(start, pair_size));
 		start++;
+	}
+}
+
+template <typename T>
+void jacobsthalInsertion(std::vector<T>& main, std::vector<T>& pend, std::vector<size_t>& pend_bound) {
+	
+	typedef typename std::vector<T>::iterator Iterator;
+	
+	int inserted_items = 1;
+	int prev_jacobsthal = 1;
+	int curr_jacobsthal = 1;
+	
+	while (!pend.empty()) {
+		int temp = curr_jacobsthal;
+		curr_jacobsthal = curr_jacobsthal + 2 * prev_jacobsthal;
+		prev_jacobsthal = temp;
+		int index = curr_jacobsthal - inserted_items;
+		if (index > static_cast<int>(pend.size())) {
+			break ;
+		}
+		while (index) {
+			Iterator pend_it = next_pair(pend.begin(), index - 1);
+			size_t main_bound_index = pend_bound[index - 1];
+			Iterator main_it;
+			if (main_bound_index >= main.size()) {
+				main_it = main.end();
+			}
+			else {
+				main_it = next_pair(main.begin(), main_bound_index);
+			}
+			Iterator found = std::upper_bound(main.begin(), main_it, *pend_it, compare<T>);
+			Iterator inserted = main.insert(found, *pend_it);
+			size_t insertion_index = std::distance(main.begin(), inserted);
+			pend.erase(pend_it);
+			pend_bound.erase(next_pair(pend_bound.begin(), index - 1));
+			for (size_t& bound_index : pend_bound) {
+				if (bound_index != main.size() && bound_index >= insertion_index) {
+					bound_index++;
+				}
+			}
+			index--;
+			inserted_items++;
+		}
 	}
 }
 
@@ -108,59 +154,13 @@ void PmergeMe::sort(T& container, int pair_size) {
 		pend.push_back(next_pair(end, pair_size - 1));
 		pend_bound.push_back(main.size());
 	}
-
-	int inserted_items = 1;
-	int prev_jacobsthal = 1;
-	int curr_jacobsthal = 1;
-	while (!pend.empty()) {
-		int temp = curr_jacobsthal;
-		curr_jacobsthal = curr_jacobsthal + 2 * prev_jacobsthal;
-		prev_jacobsthal = temp;
-		int index = curr_jacobsthal - inserted_items;
-		if (index > static_cast<int>(pend.size())) {
-			break ;
-		}
-		typename std::vector<Iterator>::iterator pend_it = next_pair(pend.begin(), index - 1);
-		size_t main_bound_index = *(next_pair(pend_bound.begin(), index - 1));
-		typename std::vector<Iterator>::iterator main_it;
-		if (main_bound_index >= main.size()) {
-			main_it = main.end();
-		}
-		else {
-			main_it = next_pair(main.begin(), main_bound_index);
-		}
-		while (index) {
-			typename std::vector<Iterator>::iterator found = std::upper_bound(main.begin(), main_it, *pend_it, compare<Iterator>);
-			typename std::vector<Iterator>::iterator inserted;
-			inserted = main.insert(found, *pend_it);
-			size_t insertion_index = std::distance(main.begin(), inserted);
-			for (size_t& bound_index : pend_bound) {
-				if (bound_index != main.size() && bound_index >= insertion_index) {
-					bound_index++;
-				}
-			}
-			
-			pend.erase(pend_it);
-			pend_bound.erase(next_pair(pend_bound.begin(), index - 1));
-			index--;
-			if (index == 0) {
-				break ;
-			}
-			pend_it = next_pair(pend.begin(), index - 1);
-			main_bound_index = pend_bound[index - 1];
-			if (main_bound_index >= main.size()) {
-				main_it = main.end();
-			}
-			else {
-				main_it = next_pair(main.begin(), main_bound_index);
-			}
-			inserted_items++;
-		}
-	}
+	
+	jacobsthalInsertion(main, pend, pend_bound);
+	
 	if (!pend.empty()) {
 		for (ssize_t i = pend.size() - 1; i >= 0; i--) {
 			typename std::vector<Iterator>::iterator pend_it = next_pair(pend.begin(), i);
-			size_t main_bound_index = *(next_pair(pend_bound.begin(), i));
+			size_t main_bound_index = pend_bound[i];
 			typename std::vector<Iterator>::iterator main_it;
 			if (main_bound_index >= main.size()) {
 				main_it = main.end();
