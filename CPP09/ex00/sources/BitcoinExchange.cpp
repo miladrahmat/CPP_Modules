@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:59:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/13 15:35:31 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/13 17:03:40 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ float	BitcoinExchange::getValue(std::string date)
 			res = it;
 		++it;
 	}
-	if (res == _data.end() || res->first.compare(date) != 0) {
-		return (-1);
+	if (res == _data.end()) {
+		throw std::runtime_error("Error: Date not found");
 	}
 	return (res->second);
 }
