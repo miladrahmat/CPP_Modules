@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 17:03:27 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/07/22 14:47:01 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/13 17:51:28 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	RPN::calculate(std::string& nums) {
 		}
 		else if (c == '/' && _result.size() >= 2) {
 			int right = _result.top();
+			if (right == 0) {
+				throw std::runtime_error("Error: Invalid input");
+			}
 			_result.pop();
 			int left = _result.top();
 			_result.pop();
