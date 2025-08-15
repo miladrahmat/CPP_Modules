@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:59:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/13 17:03:40 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/15 14:58:38 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <iostream>
 
 BitcoinExchange::BitcoinExchange()
 {
