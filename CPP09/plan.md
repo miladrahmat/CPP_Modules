@@ -15,38 +15,59 @@
 ## ex01 : stack
 
 
-## ex02 : vector
+## ex02 : vector & deque
 
-### How the algorithm works: I guess ? :D
+### How the algorithm works?
 
-We get a string of numbers as input to the program. After the input is received, we start putting the numbers in two or three vectors. Let's call them `large` and `small` and `lefovers`.
+We get a number sequence as input to the program. Let's consider the following sequence: `5 7 3 2 1 6`
 
-We think of the numbers in pairs, if we consider the following numbers:
+We first consider the numbers as **elements** **recursively** and assign each element a **pair** if possible.<br>We start with the **element size of 1**, this means that each element has 1 number,  so that each number in the sequence `5 7 3 2 1 6` is it's own element.
 
-`5 3 4 7`
+**Recursion level: 1**
 
-The pairs would be `5` and `3`, `4` and `7`. We compare these pairs and put the larger number in the `large` vector and the smaller number in `small` vector. So because `5` is greater than `3`, `5` would go in the `large` vector and `3` would go in the `small` vector. With the same logic `7` would go in the `large` vector and `4` would go in the `small` vector.
+We then assign each element a pair, which is always the next element in the sequence (**This does not change!**). So for the element `5` the pair would be `7`, for `3` the pair would be `2` and for `1` the pair would be `6`.<br>So the sequence after assiging the pairs would look like this:
+```
+5	7	3	2	1	6
+1	1	2	2	3	3
+```
 
-If we would have an uneven amount of numbers as input:
+We then swap the pairs if needed, so that the smaller element is always before the larger element.<br>For the first pair `5` and `7`, no swapping is necessary since `5` is smaller than `7`. The second pair `3` and `2` needs to be swapped since `3` is larger than `2`. The third pair is fine as well since `1` is smaller than `6`.<br>So the sequence after the swapping looks like this:
+```
+5	7	2	3	1	6
+1	1	2	2	3	3
+```
 
-`5 3 4 7 1`
+Now the pairs are sorted in ascending order. We will continue swapping the pairs recursively with the new number sequence by **doubling the element size** so the next recursion has the **element size of 2**, this means that each element has 2 numbers.
 
-The pairs would be `5` and `3`, `4` and `7`, the lefover that doesn't have a pair is `1`. Like before we would compare the pairs and put `5` and `7` in the large vector and `3` and `4` in the `small` vector. `1` would go in the `leftover` vector.
+**Recursion level: 2**
 
-### How do we sort these numbers with the least amount of comparisons?
+We again assign a pair to each of the elements, which is always the next element. So for the element `5 7` the pair would be `2 3`. The element `1 6` does not have a pair so we leave that be for now.<br>So the sequence after assigning the pairs would look like this:
+```
+5 7		2 3		1 6
+ 1	 	 1	 	 2
+```
 
-**Indexes!** We have two vectors: `large` that contains `5` and `7`. `small` that contains `3` and `4`. In the beginning `5` and `3` were pairs that we compared, now they are in seperate containers and we need to assing them an index so we remember that they were pairs. It's easy now since they both are the first element in their respective containers, so we assign them the index of `1`. Of course we'll do the same with the rest of the numbers, so `7` and `4` would be assigned with the index of `2`.
+**Recursion level: 3**
 
-**NOTE:** The indexes will not change as we start sorting, we need to still keep track of the pairs until the very end
+Now we start swapping the pairs again. **We only consider the last number of each element** and compare that with the next elements last number. So since `7` is greater than `3` whe swap the elements and end up with the following number sequence.
+```
+2 3		5 7		1 6
+ 1		 1		 2
+```
 
-### Let's start sorting!
+**Recursion level: 4**
 
-First we need to sort the `large` vector, since it's already sorted we are good. If it weren't we would have to sort them using **merge-insertion** which is what we are doing. What matters is that the indexes remain the same so that the pair in the `small` vector knows where it's pair is. The easiest way to do this is to move the pair in the `small` container to the same index as their pair in the `large` container.
+In the next recursion with the **element size of 4**, the only element would be `2 3 5 7` since we don't have enough numbers to create another element. Because we have only one element in this recursion level we come back to the previous level.
 
-Now that we have assigned indexes to the numbers and the `large` container is sorted we will start sorting. We will use **binary search** to find the correct place in the `large` container to insert the number found in the `small` container. Using the same numbers as before and the `large` container sorted we know that the first element `3` found in the `small` container is smaller than the first element `5` found in the `large` container. After the number `3` is inserted we should have in the large container:
+**Back to recursion level 3**
 
-`3` with the index of `1`<br>`5` with the index of `1`<br>`7` with the index of `2`
+In this recursion level we had this number sequence:
+```
+2 3		5 7		1 6
+ b1		 a1		 b2
+```
+(`a1` is greater than it's pair `b1`. `b2` doesn't have a pair)
 
-The `small` container has only `4` left with the index of `2`.
+We put the elements into two different containers, `main` and `pend`. The `main` will initially contain all the `a` elements and the `pend` will initially contain all `b` elements (including the odd elements which do not have a pair).
 
-Using **binary search** we can search for the correct place for `4`. We start in the middle of the container which is `5`. `4` is smaller than `5` so we check that is `4` smaller than `3`. `4` is larger than `3` so the correct place must be in between `3` and `5`!
+So the `main` would contain `5 7`, and `pend` would contain `2 3` and `1 6`.<br> We start inserting elements from `pend` into `main` using **binary search** using the **jacobsthal sequence**.
