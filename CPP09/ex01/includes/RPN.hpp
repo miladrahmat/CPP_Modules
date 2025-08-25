@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 13:55:55 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/07/22 14:45:54 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:42:46 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class	RPN {
 	private:
-		std::stack<int>	_result;
+		std::stack<double>	_result;
 		
 	public:
 		RPN() = default;

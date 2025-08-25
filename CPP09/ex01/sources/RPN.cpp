@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 17:03:27 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/13 17:51:28 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:40:44 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	RPN::calculate(std::string& nums) {
 			continue ;
 		}
 		else if (std::isdigit(c) != 0) {
-			int num = c - '0';
+			double num = c - '0';
 			_result.push(num);
 		}
 		else if (c == '+' && _result.size() >= 2) {
-			int right = _result.top();
+			double right = _result.top();
 			_result.pop();
-			int left = _result.top();
+			double left = _result.top();
 			_result.pop();
 			_result.push(left + right);
 		}
@@ -38,19 +38,19 @@ void	RPN::calculate(std::string& nums) {
 			_result.push(left - right);
 		}
 		else if (c == '*' && _result.size() >= 2) {
-			int right = _result.top();
+			double right = _result.top();
 			_result.pop();
-			int left = _result.top();
+			double left = _result.top();
 			_result.pop();
 			_result.push(left * right);
 		}
 		else if (c == '/' && _result.size() >= 2) {
-			int right = _result.top();
+			double right = _result.top();
 			if (right == 0) {
 				throw std::runtime_error("Error: Invalid input");
 			}
 			_result.pop();
-			int left = _result.top();
+			double left = _result.top();
 			_result.pop();
 			_result.push(left / right);
 		}
@@ -59,7 +59,7 @@ void	RPN::calculate(std::string& nums) {
 		}
 	}
 	if (_result.size() == 1) {
-		std::cout << _result.top() << std::endl;
+		std::cout << static_cast<int>(_result.top()) << std::endl;
 	}
 	else {
 		throw std::runtime_error("Error: Invalid input");
