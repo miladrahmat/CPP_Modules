@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:07:15 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/13 13:16:25 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/25 11:46:48 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int main(int ac, char** av) {
 	}
 	std::cout << std::endl;
 
-	std::cout << "Time to process " << num_vec.size() << " elements with std::vector : " << duration_vec.count() + duration_data.count() << " us" << std::endl;
+	std::cout << "Time to process a range of " << num_vec.size() << " elements with std::vector : " << duration_vec.count() + duration_data.count() << " us" << std::endl;
 	if (!DEBUG) {
-		std::cout << "Time to process " << num_deq.size() << " elements with std::deque : " << duration_deq.count() + duration_data.count() << " us" << std::endl;
+		std::cout << "Time to process a range of " << num_deq.size() << " elements with std::deque : " << duration_deq.count() + duration_data.count() << " us" << std::endl;
 	}
 
 	if (DEBUG) {
