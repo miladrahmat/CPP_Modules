@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:17:48 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/15 14:58:58 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/08/25 12:43:40 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,32 @@ int	main(int ac, char **av)
 		std::cerr << "Unable to open file" << std::endl;
 		return 1;
 	}
-	BitcoinExchange	bit;
-	std::string	line;
-	while (std::getline(input, line)) {
-		try {
-			std::string date = isValidDate(line);
-			float	amount = std::stof(line.substr(line.find_first_of('|') + 1, line.npos));
-			if (amount < 0)
-				std::cerr << "Error: not a positive number." << std::endl;
-			else if (amount > 1000)
-				std::cerr << "Error: too large a number." << std::endl;
-			else {
-				float value = bit.getValue(date) * amount;
-				if (std::isinf(value)) {
-					std::cerr << "Error: Too large a number" << std::endl;
-				}
+	try {
+		BitcoinExchange	bit;
+		std::string	line;
+		while (std::getline(input, line)) {
+			try {
+				std::string date = isValidDate(line);
+				float	amount = std::stof(line.substr(line.find_first_of('|') + 1, line.npos));
+				if (amount < 0)
+					std::cerr << "Error: not a positive number." << std::endl;
+				else if (amount > 1000)
+					std::cerr << "Error: too large a number." << std::endl;
 				else {
-					std::cout << date << " => " << amount << " = " << value << std::endl; 
+					float value = bit.getValue(date) * amount;
+					if (std::isinf(value)) {
+						std::cerr << "Error: Too large a number" << std::endl;
+					}
+					else {
+						std::cout << date << " => " << amount << " = " << value << std::endl; 
+					}
 				}
+			} catch (std::exception& e) {
+				std::cerr << e.what() << std::endl;
 			}
-		} catch (std::exception& e) {
-			std::cerr << e.what() << std::endl;
 		}
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
 	return (0);
 }
