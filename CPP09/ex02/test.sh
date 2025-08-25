@@ -16,7 +16,7 @@ limit_100=534
 limit_1000=8641
 
 #Compiling the program
-make debug
+make debug > /dev/null 2> /dev/null
 
 #Checking if the program exists and saving the name
 program=$(find . -type f -name "PmergeMe")
@@ -152,3 +152,7 @@ done
 echo -e "\n$CYAN Summary: $RESET"
 echo -e "$GREEN Successful tests: $success  / $tests $RESET"
 echo -e "\nTests can be found in $test_case_file\n"
+
+# Cleaning the executable before exiting
+make fclean > /dev/null 2> /dev/null
+exit 0
