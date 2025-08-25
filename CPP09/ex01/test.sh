@@ -15,6 +15,7 @@ valid_case12="6 2 3 * + 4 /"
 valid_case13="5 1 + 8 4 / -"
 valid_case14="3 3 + 2 2 + *"
 valid_case15="9 1 - 2 / 5 +"
+valid_case16="9 8 0 7 3 + - / *"
 
 res_case1=9
 res_case2=6
@@ -31,6 +32,7 @@ res_case12=3
 res_case13=4
 res_case14=24
 res_case15=9
+res_case16=-7
 
 invalid_case1="5 2 %"
 invalid_case2="3 4 ^"
@@ -250,6 +252,19 @@ rm -f result.txt
 printf "$CYAN Test 15: $RESET\n"
 echo $res_case15 > expected.txt
 $program "$valid_case15" > RPN.txt 2> /dev/null
+diff expected.txt RPN.txt > result.txt
+if [ $? -eq 0 ]; then
+	printf "\t $GREEN SUCCESS $RESET\n\n"
+else
+	printf "\t $RED FAILURE $RESET\n\n"
+fi
+rm -f expected.txt
+rm -f RPN.txt
+rm -f result.txt
+
+printf "$CYAN Test 16: $RESET\n"
+echo $res_case16 > expected.txt
+$program "$valid_case16" > RPN.txt 2> /dev/null
 diff expected.txt RPN.txt > result.txt
 if [ $? -eq 0 ]; then
 	printf "\t $GREEN SUCCESS $RESET\n\n"
