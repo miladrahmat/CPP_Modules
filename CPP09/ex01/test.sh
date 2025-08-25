@@ -41,6 +41,8 @@ invalid_case6="5.5 2 +"
 invalid_case7="-1 4 +"
 invalid_case8="3 7.1 *"
 invalid_case9="9 9 9 9 + +"
+invalid_case10=""
+invalid_case11="5 0 /"
 
 CYAN="\e[1;36m"
 YELLOW="\e[1;93m"
@@ -49,7 +51,7 @@ RED="\e[1;91m"
 RESET="\e[0m"
 
 #Compiling the program
-make re
+make re > /dev/null 2> /dev/null
 
 #Checking if the program exists and saving the name
 program=$(find . -type f -name "RPN")
@@ -333,6 +335,22 @@ else
 	printf "\t $RED FAILURE $RESET\n\n"
 fi
 
-make fclean
+printf "$CYAN Test 10: $RESET\n"
+$program "$invalid_case10" > /dev/null 2> /dev/null
+if [ $? -ne 0 ]; then
+	printf "\t $GREEN SUCCESS $RESET\n\n"
+else
+	printf "\t $RED FAILURE $RESET\n\n"
+fi
+
+printf "$CYAN Test 11: $RESET\n"
+$program "$invalid_case11" > /dev/null 2> /dev/null
+if [ $? -ne 0 ]; then
+	printf "\t $GREEN SUCCESS $RESET\n\n"
+else
+	printf "\t $RED FAILURE $RESET\n\n"
+fi
+
+make fclean > /dev/null 2> /dev/null
 
 exit 0
