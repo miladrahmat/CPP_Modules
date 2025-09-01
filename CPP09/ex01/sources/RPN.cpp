@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 17:03:27 by mrahmat-          #+#    #+#             */
-/*   Updated: 2025/08/25 14:40:44 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:28:20 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	RPN::calculate(std::string& nums) {
 		}
 	}
 	if (_result.size() == 1) {
-		std::cout << static_cast<int>(_result.top()) << std::endl;
+		std::cout << _result.top() << std::endl;
 	}
 	else {
 		throw std::runtime_error("Error: Invalid input");

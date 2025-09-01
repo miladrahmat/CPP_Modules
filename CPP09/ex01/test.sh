@@ -32,7 +32,7 @@ res_case12=3
 res_case13=4
 res_case14=24
 res_case15=9
-res_case16=-7
+res_case16=-7.2
 
 invalid_case1="5 2 %"
 invalid_case2="3 4 ^"
